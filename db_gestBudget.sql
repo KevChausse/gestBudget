@@ -3,7 +3,7 @@
 
 	USE DB_Budget;
 
-	/* Création des tables */
+	/* Création des tables */ /*123*/
 
 	CREATE TABLE IF NOT EXISTS Personnes (
 		id_personne int PRIMARY KEY AUTO_INCREMENT,
