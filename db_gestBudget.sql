@@ -1,7 +1,7 @@
-	CREATE DATABASE IF NOT EXISTS DB_gestBudget;
+	CREATE DATABASE IF NOT EXISTS gestBudget_DB;
 
 
-	USE DB_gestBudget;
+	USE gestBudget_DB;
 
 	/* Création des tables */
 
