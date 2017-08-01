@@ -1,7 +1,7 @@
-	CREATE DATABASE IF NOT EXISTS DB_Budget;
+	CREATE DATABASE IF NOT EXISTS gestBudget_DB;
 
 
-	USE DB_Budget;
+	USE gestBudget_DB;
 
 	/* Création des tables */ /*123*/
 
@@ -23,28 +23,13 @@
 
 
 
-	CREATE TABLE IF NOT EXISTS Poste_Depenses (
-		id_poste int PRIMARY KEY AUTO_INCREMENT,
-		nom_poste text
-	);
-
-
-
 	CREATE TABLE IF NOT EXISTS Depenses (
 		id_depense int PRIMARY KEY AUTO_INCREMENT,
 		montant_depense decimal(10, 2),
 		date_depense date,
-		poste_depense int,
+		poste_depense text,
 		personne_depense int,
-		FOREIGN KEY (poste_depense) REFERENCES Poste_Depenses(id_poste),
 		FOREIGN KEY (personne_depense) REFERENCES Personnes(id_personne)
-	);
-
-
-
-	CREATE TABLE IF NOT EXISTS Origine_Rentrees (
-		id_origine int PRIMARY KEY AUTO_INCREMENT,
-		nom_origine text
 	);
 
 
@@ -53,17 +38,9 @@
 		id_rentree int PRIMARY KEY AUTO_INCREMENT,
 		montant_rentree decimal(10, 2),
 		date_rentree date,
-		origine_rentree int,
+		origine_rentree text,
 		personne_rentree int,
-		FOREIGN KEY (origine_rentree) REFERENCES Origine_Rentrees(id_origine),
 		FOREIGN KEY (personne_rentree) REFERENCES Personnes(id_personne)
-	);
-
-
-
-	CREATE TABLE IF NOT EXISTS Raison_Budgets (
-		id_raison int PRIMARY KEY AUTO_INCREMENT,
-		nom_raison text
 	);
 
 
@@ -72,12 +49,9 @@
 		id_budget int PRIMARY KEY AUTO_INCREMENT,
 		montant_budget decimal,
 		date_budget date,
-		emetteur_budget int,
-		recepteur_budget int,
-		depense_budget int,
-		rentree_budget int,
-		raison_budget int,
-		FOREIGN KEY (raison_budget) REFERENCES Raison_Budgets(id_raison)
+		raison_budget text,
+		personne_budget int,
+		FOREIGN KEY (personne_budget) REFERENCES Personnes(id_personne)
 	);
 
 
