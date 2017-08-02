@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var bcrypt = require('bcrypt');
 
 var connection = mysql.createConnection({
 	host : 'localhost', // à renseigner
@@ -16,14 +17,17 @@ connection.connect();
 router.post('/', function(req, res, next){
 
  var postUser = function(retFunc){
-    connection.query("SELECT * FROM connect WHERE login_connect='"+req.body.login+"' and password_connect='"+req.body.password+"'",function(error, results, fields) {
-	      if(error) res.send(error);
+
+    connection.query("SELECT * FROM connect WHERE login_connect='"+req.body.login+"'",function(error, results, fields) {
+        if(error) res.send(error);
         else if (results.length > 0){
-          retFunc(results);
+          bcrypt.compare(req.body.password, results[0].password_connect, function(err, res) {
+              if(res) retFunc(results);
+              else retFunc(false);
+          });
         }
         else retFunc(false);
     }); 
-        
   }
 
   postUser(function(results) {

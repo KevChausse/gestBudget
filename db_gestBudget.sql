@@ -16,7 +16,7 @@
 
 	CREATE TABLE IF NOT EXISTS Connect (
 		login_connect varchar(20) PRIMARY KEY,
-		password_connect varchar(20),
+		password_connect varchar(100),
 		personne_connect int,
 		FOREIGN KEY (personne_connect) REFERENCES Personnes(id_personne)
 	);
@@ -60,4 +60,4 @@
 
 	INSERT INTO Personnes (nom_personne, prenom_personne, is_parent) VALUES ('Dupont','Jean', 1);
 
-	INSERT INTO Connect VALUES ('root','root',1);
+	INSERT INTO Connect VALUES ('root','$2a$10$E..Xqm5p/kFx9WjGbI9lD.6lXKFwzmIjfi.uieK.mPVt/Fone5oA6',1);

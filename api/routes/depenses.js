@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var bcrypt = require('bcrypt');
 
 var connection = mysql.createConnection({
 	host : 'localhost', // à renseigner
@@ -11,6 +12,16 @@ var connection = mysql.createConnection({
 
 
 connection.connect();
+
+
+
+router.get('/',function(req, res, next) {
+ bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash("root", salt, function(err, hash) {
+        res.json(hash);
+      });
+ });
+} );
 
 /* GET retourne la liste des depenses ou 1 depense si un id de personne est renseigné. */
 router.get('/pers/:id?', function(req, res, next) {

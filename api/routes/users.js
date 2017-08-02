@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var bcrypt = require('bcrypt');
 
 var connection = mysql.createConnection({
 	host : 'localhost', // à renseigner
@@ -33,13 +34,19 @@ router.post('/log/', function(req, res, next) {
 });
 
 
-/* POST retourne l'existance ou non d'un login entré en parametres */
+/* POST creation d'un nouvel utilisateur */
 router.post('/', function(req, res, next) {
   
     var postUsers = function(retFunc){
-      connection.query("INSERT INTO connect (login_connect, password_connect, personne_connect) VALUES ('"+req.body.login+"','"+req.body.password+"',"+req.body.id_pers+")",function(error, results, fields) {
-        if(error) res.send(error);
-        else retFunc(0);
+      var hash_password;
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+            this.hash_password = hash;
+            connection.query("INSERT INTO connect (login_connect, password_connect, personne_connect) VALUES ('"+req.body.login+"','"+this.hash_password+"',"+req.body.id_pers+")",function(error, results, fields) {
+              if(error) res.send(error);
+              else retFunc(0);
+            });
+        });
       });
     }
 
@@ -77,10 +84,23 @@ router.put('/:id', function(req, res, next) {
   
     var putUsersId = function(retFunc){
       var query1;
+      var hash_password;
       if(req.body.login){ 
-        query1 = "INSERT INTO connect (login_connect, password_connect, personne_connect) VALUES ('"+req.body.login+"','',"+req.params.id+")";
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(req.body.login, salt, function(err, hash) {
+               this.hash_password = hash;
+               query1 = "INSERT INTO connect (login_connect, password_connect, personne_connect) VALUES ('"+req.body.login+"','"+this.hash_password+"',"+req.params.id+")";
+            });
+        });
+        
       } else if(req.body.password) {
-        query1 = "UPDATE connect SET password_connect = '"+req.body.password+"' WHERE personne_connect = '"+req.params.id+"'";
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(req.body.password, salt, function(err, hash) {
+               this.hash_password = hash;
+               query1 = "UPDATE connect SET password_connect = '"+this.hash_password+"' WHERE personne_connect = '"+req.params.id+"'";
+            });
+        });
+      
       }
 
       var query2 = "UPDATE personnes SET nom_personne ='"+req.body.nom+"', prenom_personne = '"+req.body.prenom+"', is_parent = "+req.body.is_parent+" WHERE id_personne = "+req.params.id;
