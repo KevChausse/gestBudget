@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-/* GET retourne la liste des personnes ou 1 personne si un id est renseigné. */
+/* GET retourne la liste des rentrees ou 1 rentree si un id de personne est renseigné. */
 router.get('/pers/:id?', function(req, res, next) {
   
   var getRentrees = function(retFunc){
@@ -87,7 +87,7 @@ router.put('/:id', function(req, res, next) {
 });
 
 
-/* DELETE modifie la rentrée correspondante à l'id renseigné dans l'url. */
+/* DELETE supprime la rentrée correspondante à l'id renseigné dans l'url. */
 router.delete('/:id', function(req, res, next) {
   
   var deleteRentreesId = function(retFunc){
