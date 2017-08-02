@@ -33,9 +33,9 @@ router.get('/', function(req, res, next) {
 /* GET user by login. */
 router.get('/:id', function(req, res, next){
 
- var getUsers = function(idPers, retFunc){
+ var getUsers = function(login_user, retFunc){
 
-    var query = "SELECT login_connect, password_connect FROM connect WHERE login_connect = '"+idPers+"'";
+    var query = "SELECT login_connect, password_connect FROM connect WHERE login_connect = '"+login_user+"'";
     connection.query(query,function(error, results, fields) {
         if(error) res.send(error);
         else retFunc(results);
@@ -68,12 +68,31 @@ router.post('/', function(req, res, next){
 });
 
 
+/* PUT user by login. */
+router.put('/:id', function(req, res, next){
+
+ var putUser = function(login_user, retFunc){
+   
+    connection.query("UPDATE connect SET password_connect = '"+req.body.password+"' WHERE login_connect = '"+login_user+"'", function(error, results, fields) {
+	      if(error) res.send(error);
+        else retFunc(results);
+    }); 
+        
+  }
+
+  putUser(req.params.id, function(results) {
+    res.json(results);
+  });
+  
+});
+
+
 /* DELETE new user. */
 router.delete('/:id', function(req, res, next){
 
- var delUser = function(id_pers, retFunc){
+ var delUser = function(login_user, retFunc){
    
-    connection.query("DELETE FROM connect WHERE login_connect = '"+id_pers+"'", function(error, results, fields) {
+    connection.query("DELETE FROM connect WHERE login_connect = '"+login_user+"'", function(error, results, fields) {
 	      if(error) res.send(error);
         else retFunc(results);
     }); 
