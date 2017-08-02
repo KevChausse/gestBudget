@@ -38,7 +38,7 @@ router.get('/pers/:id?', function(req, res, next) {
 router.get('/dep/:id', function(req, res, next) {
   
   var getDepensesId = function(retFunc){
-    query = "SELECT id_depense, poste_depense, DATE_FORMAT(date_depense, '%Y-%m-%d') AS 'm_date_depense', prenom_personne, nom_personne, montant_depense, personne_depense, poste_depense FROM depenses d JOIN personnes p on d.personne_depense = p.id_personne WHERE id_depense = "+req.params.id;
+    query = "SELECT id_depense, poste_depense, DATE_FORMAT(date_depense, '%Y-%m-%d') AS 'm_date_depense', prenom_personne, nom_personne, montant_depense, personne_depense FROM depenses d JOIN personnes p on d.personne_depense = p.id_personne WHERE id_depense = "+req.params.id;
     connection.query(query,function(error, results, fields) {
       if(error) res.send(error);
       else retFunc(results);
@@ -55,14 +55,14 @@ router.get('/dep/:id', function(req, res, next) {
 /* POST Ajoute une nouvelle depense */
 router.post('/', function(req, res, next) {
   
-  var postDepensesId = function(retFunc){
+  var postDepenses = function(retFunc){
     connection.query("INSERT INTO depenses (montant_depense, date_depense, poste_depense, personne_depense) VALUES ('"+req.body.montant+"','"+req.body.date+"','"+req.body.poste+"',"+req.body.id_pers+")",function(error, results, fields) {
       if(error) res.send(error);
       else retFunc(results.insertId);
     });
   }
 
-  postDepensesId(function(results) {
+  postDepenses(function(results) {
     res.json(results);
   });    
 

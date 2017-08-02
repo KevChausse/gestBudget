@@ -38,7 +38,7 @@ router.get('/pers/:id?', function(req, res, next) {
 router.get('/rent/:id', function(req, res, next) {
   
   var getRentreesId = function(retFunc){
-    query = "SELECT id_rentree, origine_rentree, DATE_FORMAT(date_rentree, '%Y-%m-%d') AS 'm_date_rentree', prenom_personne, nom_personne, montant_rentree, personne_rentree, origine_rentree FROM rentrees d JOIN personnes p on d.personne_rentree = p.id_personne WHERE id_rentree = "+req.params.id;
+    query = "SELECT id_rentree, origine_rentree, DATE_FORMAT(date_rentree, '%Y-%m-%d') AS 'm_date_rentree', prenom_personne, nom_personne, montant_rentree, personne_rentree FROM rentrees d JOIN personnes p on d.personne_rentree = p.id_personne WHERE id_rentree = "+req.params.id;
     connection.query(query,function(error, results, fields) {
       if(error) res.send(error);
       else retFunc(results);
@@ -55,14 +55,14 @@ router.get('/rent/:id', function(req, res, next) {
 /* POST Ajoute une nouvelle rentrée */
 router.post('/', function(req, res, next) {
   
-  var postRentreesId = function(retFunc){
+  var postRentrees = function(retFunc){
     connection.query("INSERT INTO rentrees (montant_rentree, date_rentree, origine_rentree, personne_rentree) VALUES ('"+req.body.montant+"','"+req.body.date+"','"+req.body.origine+"',"+req.body.id_pers+")",function(error, results, fields) {
       if(error) res.send(error);
       else retFunc(results.insertId);
     });
   }
 
-  postRentreesId(function(results) {
+  postRentrees(function(results) {
     res.json(results);
   });    
 
