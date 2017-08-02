@@ -16,7 +16,6 @@ connection.connect();
 router.post('/', function(req, res, next){
 
  var postUser = function(retFunc){
-   console.log("SELECT * FROM connect WHERE login_connect='"+req.body.login+"' and password_connect='"+req.body.password+"'");
     connection.query("SELECT * FROM connect WHERE login_connect='"+req.body.login+"' and password_connect='"+req.body.password+"'",function(error, results, fields) {
 	      if(error) res.send(error);
         else if (results.length > 0){
