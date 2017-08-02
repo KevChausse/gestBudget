@@ -10,6 +10,8 @@ var depenses = require('./routes/depenses');
 var connect = require('./routes/connect');
 var budgets = require('./routes/budgets');
 var users = require('./routes/users');
+var personnes = require('./routes/personnes');
+var transactions = require('./routes/transactions');
 
 var app = express();
 
@@ -30,6 +32,8 @@ app.use('/depenses', depenses);
 app.use('/connect', connect);
 app.use('/budgets', budgets);
 app.use('/users', users);
+app.use('/personnes', personnes);
+app.use('/transactions', transactions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
