@@ -5,9 +5,29 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import {budgetComponent } from './budget/budget.component';
+import { depenseComponent } from './depense/depense.component';
+import { loginComponent } from './login/login.component';
+import { personneComponent } from './personne/personne.component';
+import { rentreeComponent } from './rentree/rentrees.component';
+
+const appRoutes:Routes=[
+  {path:'budget', component:budgetComponent},
+  {path: 'depense',component:depenseComponent},
+  {path: 'login',component:loginComponent},
+  {path: 'personne',component: personneComponent },
+  {path: 'rentree', component:rentreeComponent}
+]
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    budgetComponent,
+    depenseComponent,
+    loginComponent,
+    personneComponent,
+    rentreeComponent
   ],
   imports: [
     BrowserModule,
