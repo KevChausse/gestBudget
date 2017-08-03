@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { DepensesComponent } from './depenses/depenses.component';
 import { IndexComponent } from './index/index.component';
+import { LogoutComponent } from './logout/logout.component';
 import { IndexTotalComponent } from './indexTotal/indexTotal.component';
 import { RentreesComponent } from './rentrees/rentrees.component';
 import { UpdBudgetsComponent } from './updBudgets/updBudgets.component';
@@ -21,14 +22,16 @@ const appRoutes: Routes = [
   {path: 'budgets', component: BudgetsComponent},
   {path: 'depenses', component: DepensesComponent},
   {path: 'index', component: IndexComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'indexTotal', component: IndexTotalComponent},
   {path: 'rentrees', component: RentreesComponent},
   {path: 'updBudgets', component: UpdBudgetsComponent},
   {path: 'updDepenses', component: UpdDepensesComponent},
   {path: 'updRentrees', component: UpdRentreesComponent},
   {path: 'updUsers', component: UpdUsersComponent},
-  {path: 'users', component: UsersComponent}
-]
+  {path: 'users', component: UsersComponent},
+  {path: '', redirectTo: '/index', pathMatch: 'full'}
+];
 
 
 @NgModule({
@@ -37,6 +40,7 @@ const appRoutes: Routes = [
     BudgetsComponent,
     DepensesComponent,
     IndexComponent,
+    LogoutComponent,
     IndexTotalComponent,
     RentreesComponent,
     UpdBudgetsComponent,
