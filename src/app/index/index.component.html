@@ -48,6 +48,7 @@
 					   
                       <td *ngIf="totalTransac < 0" class="text-danger text-right"><b>{{totalTransac.toFixed(2)}} &euro;</b></td>
                       <td *ngIf="totalTransac > 0" class="text-success text-right"><b>+{{totalTransac.toFixed(2)}} &euro;</b></td>
+                      <td *ngIf="totalTransac == 0" class="text-success text-right"><b>+0,00 &euro;</b></td>
                     
 					</tr>
 				</table>
