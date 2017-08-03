@@ -1,6 +1,6 @@
 
 
-		 <div class="container">
+	<!--	 <div class="container">
 	        <div class="row">
 	            <div class="col-md-4 col-md-offset-4">
 	                <div class="login-panel panel panel-default">
@@ -16,7 +16,6 @@
 	                                <div class="form-group">
 	                                    <input class="form-control" placeholder="Mot de Passe" name="password" type="password" value="">
 	                                </div>
-	                                <!-- Change this to a button or input when using this as a form -->
 	                                <button type='submit' class="btn btn-lg btn-success btn-block">Se connecter</button>
 	                            </fieldset>
 	                        </form>
@@ -26,4 +25,61 @@
 	            </div>
 	        </div>
 	     </div>
- 
+ -->
+
+
+    <div id="wrapper">
+   <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" [routerLink] = "['/index']">Budget Familial</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <li>
+                    <a [routerLink] = "['/users']" title="Ajouter, modifier, supprimer et voir les utilisateurs">
+                         <i class="fa fa-users fa-fw"></i> Gestion des utilisateur
+                    </a>
+                </li>
+                
+               
+                <li>
+                    <a [routerLink] = "['/logout']">
+                         <i class="fa fa-times-circle fa-fw"></i> D&eacute;connexion
+                    </a>
+                </li>               
+            </ul>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a [routerLink] = "['/index']"  class="active" ><i class="fa fa-home fa-fw"></i> Accueil</a>
+                        </li>
+                        <li>
+                            <a [routerLink] = "['/depenses']" title="Ajouter, modifier, supprimer et voir les d&eacute;penses" ><i class="fa fa-sign-out fa-fw"></i> Gerer les d&eacute;penses</a>
+                        </li>
+                        <li>
+                            <a [routerLink] = "['/rentrees']" title="Ajouter, modifier, supprimer et voir les rentr&eacute;es" ><i class="fa fa-sign-in fa-fw"></i> Gerer les rentr&eacute;es</a>
+                        </li>
+                        
+                        <li>
+                            <a [routerLink] = "['/budgets']" title="Ajouter, modifier, supprimer et voir les budgets exceptionnels" ><i class="fa fa-money fa-fw"></i> Gerer le budget exceptionnel</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+		</nav>
+		
+
+		<router-outlet></router-outlet>
+
+
+		
+    </div>
+    <!-- /#wrapper -->
