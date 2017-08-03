@@ -71,7 +71,7 @@ router.get('/transac/:id', function(req, res, next) {
         var tab1, tab2, tab3;
         var query1 = "SELECT id_depense AS id, poste_depense AS nom_transac, DATE_FORMAT(date_depense, '%Y-%m-%d') AS 'm_date', prenom_personne, nom_personne, montant_depense AS montant_n FROM depenses d JOIN personnes p on d.personne_depense = p.id_personne WHERE personne_depense = "+req.params.id;
         var query2 = "SELECT id_rentree AS id, origine_rentree AS nom_transac, DATE_FORMAT(date_rentree, '%Y-%m-%d') AS 'm_date', prenom_personne, nom_personne, montant_rentree AS montant_p FROM rentrees d JOIN personnes p on d.personne_rentree = p.id_personne WHERE personne_rentree = "+req.params.id;
-        var query3 = "SELECT id_budget AS id, raison_budget AS nom_transac, DATE_FORMAT(date_budget, '%Y-%m-%d') AS 'm_date', prenom_personne, nom_personne, montant_budget AS montant_p FROM budgets d JOIN personnes p on d.personne_budget = p.id_personne WHERE personne_budget = "+req.params.id;
+        var query3 = "SELECT id_budget AS id, raison_budget AS nom_transac, DATE_FORMAT(date_budget, '%Y-%m-%d') AS 'm_date', prenom_personne, nom_personne, montant_budget AS montant_n FROM budgets d JOIN personnes p on d.personne_budget = p.id_personne WHERE personne_budget = "+req.params.id;
         connection.query(query1,function(error, results, fields) {
             tab1 = results;
             connection.query(query2,function(error, results, fields) {

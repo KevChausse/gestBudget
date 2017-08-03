@@ -2,7 +2,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Bienvenue Jean</h1>
+                    <h1 *ngFor = 'let pers of personne' class="page-header">Bienvenue {{pers.prenom_personne}}</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -15,9 +15,9 @@
 
                 <div class="col-lg-4 text-right">
                     <h4>
-                        <select id="selPers" onchange="updPage()">
-                        <option value="all" >-Toutes les personnes-</option>
-                             <option *ngFor = 'let usr of personne' value="{{usr.id_personne}}" selected >
+                        <select id="selPers" #myform (change)="onChange(myform.value)">
+                        <option value="0">-Toutes les personnes-</option>
+                             <option *ngFor = 'let usr of personneList' [value]="usr.id_personne" selected >
                                 {{usr.prenom_personne}} {{usr.nom_personne}}
                              </option>
                         </select>
@@ -32,13 +32,22 @@
 					  <th>Personne</th>
 					  <th>Montant</th>
                     </tr>
-                    
+
+                    <tr *ngFor = 'let trsc of transactions'>
+                        <td>#{{trsc.id}}</td>
+                        <td>{{trsc.nom_transac}}</td>
+                        <td>{{trsc.m_date}}</td>
+                        <td>{{trsc.prenom_personne}} {{trsc.nom_personne}}</td>
+                        <td *ngIf="trsc.montant_n" class="text-danger text-right">-{{trsc.montant_n.toFixed(2)}} &euro;</td>
+                        <td *ngIf="trsc.montant_p" class="text-success text-right">+{{trsc.montant_p.toFixed(2)}} &euro;</td>
+                    </tr>                    
                    
                     
 					<tr>
 					  <th colspan="4" class="text-right">Total</th>
 					   
-                      <td class="text-success text-right"><b>+0.00 &euro;</b></td>
+                      <td *ngIf="totalTransac < 0" class="text-danger text-right"><b>{{totalTransac.toFixed(2)}} &euro;</b></td>
+                      <td *ngIf="totalTransac > 0" class="text-success text-right"><b>+{{totalTransac.toFixed(2)}} &euro;</b></td>
                     
 					</tr>
 				</table>
