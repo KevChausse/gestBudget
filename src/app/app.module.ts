@@ -5,31 +5,44 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { mainComponent } from './main/main.component';
-import { budgetComponent } from './budget/budget.component';
-import { depenseComponent } from './depense/depense.component';
-import { loginComponent } from './login/login.component';
-import { personneComponent } from './personne/personne.component';
-import { rentreeComponent } from './rentree/rentree.component';
+import { BudgetsComponent } from './budgets/budgets.component';
+import { DepensesComponent } from './depenses/depenses.component';
+import { IndexComponent } from './index/index.component';
+import { IndexTotalComponent } from './indexTotal/indexTotal.component';
+import { RentreesComponent } from './rentrees/rentrees.component';
+import { UpdBudgetsComponent } from './updBudgets/updBudgets.component';
+import { UpdDepensesComponent } from './updDepenses/updDepenses.component';
+import { UpdRentreesComponent } from './updRentrees/updRentrees.component';
+import { UpdUsersComponent } from './updUsers/updUsers.component';
+import { UsersComponent } from './users/users.component';
 import { RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
-  {path: 'budget', component: budgetComponent},
-  {path: 'depense', component: depenseComponent},
-  {path: 'login', component: loginComponent},
-  {path: 'personne', component: personneComponent },
-  {path: 'rentree', component: rentreeComponent}
-]
+  {path: 'budgets', component: BudgetsComponent},
+  {path: 'depenses', component: DepensesComponent},
+  {path: 'index', component: IndexComponent},
+  {path: 'indexTotal', component: IndexTotalComponent},
+  {path: 'rentrees', component: RentreesComponent},
+  {path: 'updBudgets', component: UpdBudgetsComponent},
+  {path: 'updDepenses', component: UpdDepensesComponent},
+  {path: 'updRentrees', component: UpdRentreesComponent},
+  {path: 'updUsers', component: UpdUsersComponent},
+  {path: 'users', component: UsersComponent}
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    budgetComponent,
-    depenseComponent,
-    loginComponent,
-    personneComponent,
-    rentreeComponent
+    BudgetsComponent,
+    DepensesComponent,
+    IndexComponent,
+    IndexTotalComponent,
+    RentreesComponent,
+    UpdBudgetsComponent,
+    UpdDepensesComponent,
+    UpdRentreesComponent,
+    UpdUsersComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
