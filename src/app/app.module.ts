@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   {path: 'updRentrees', component: UpdRentreesComponent},
   {path: 'updUsers', component: UpdUsersComponent},
   {path: 'users', component: UsersComponent}
+]
 
 
 @NgModule({
