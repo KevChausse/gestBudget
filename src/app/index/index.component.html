@@ -17,15 +17,9 @@
                     <h4>
                         <select id="selPers" onchange="updPage()">
                         <option value="all" >-Toutes les personnes-</option>
-                    
-                            <option value="1" selected >
-                            Jean Dupont
-                            </option>
-                    
-                            <option value="2" >
-                            Jean Dupont
-                            </option>
-                    
+                             <option *ngFor = 'let usr of personne' value="{{usr.id_personne}}" selected >
+                                {{usr.prenom_personne}} {{usr.nom_personne}}
+                             </option>
                         </select>
                     </h4>
                 </div>
@@ -37,7 +31,9 @@
 					  <th>Date</th>
 					  <th>Personne</th>
 					  <th>Montant</th>
-					</tr>
+                    </tr>
+                    
+                   
                     
 					<tr>
 					  <th colspan="4" class="text-right">Total</th>
