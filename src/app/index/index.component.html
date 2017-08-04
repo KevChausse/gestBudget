@@ -24,6 +24,7 @@
                     </h4>
                 </div>
 
+            <div *ngIf="selectPers != 0">    
 	            <table class="table table-bordered table-striped">
 				  	<tr>
 					  <th>ID</th>
@@ -51,7 +52,28 @@
                       <td *ngIf="totalTransac == 0" class="text-success text-right"><b>+0,00 &euro;</b></td>
                     
 					</tr>
+                </table>
+            </div>
+
+            <div *ngIf="selectPers == 0">
+
+	            <table class="table table-bordered table-striped">
+				  	<tr>
+					  <th>ID</th>
+					  <th>Personne</th>
+					  <th>Total</th>
+					</tr>
+                    
+                    <tr *ngFor = 'let trsc of totalList'>
+                        <td><a (click)="onChange(1)">#{{trsc.id}}</a></td>
+                        <td>{{trsc.nom}}</td>
+                        <td *ngIf="trsc.total < 0" class="text-danger text-right">-{{trsc.total.toFixed(2)}} &euro;</td>
+                        <td *ngIf="trsc.total >= 0" class="text-success text-right">+{{trsc.total.toFixed(2)}} &euro;</td>
+                    </tr>
+                    
 				</table>
+            </div>
+
             </div>
             <!-- /.row -->
         </div>
@@ -59,15 +81,7 @@
 
 
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/sb-admin-2.js"></script>
-    <script src="/jquery-ui.js"></script>
-
-    <script>
-      function updPage(){
-        var selPers = document.getElementById('selPers').value;
-        window.location.replace("/index/"+selPers);
-      }
-
-    </script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/sb-admin-2.js"></script>
+    <script src="./assets/jquery-ui.js"></script>

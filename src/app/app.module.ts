@@ -9,7 +9,6 @@ import { BudgetsComponent } from './budgets/budgets.component';
 import { DepensesComponent } from './depenses/depenses.component';
 import { IndexComponent } from './index/index.component';
 import { LogoutComponent } from './logout/logout.component';
-import { IndexTotalComponent } from './indexTotal/indexTotal.component';
 import { RentreesComponent } from './rentrees/rentrees.component';
 import { UpdBudgetsComponent } from './updBudgets/updBudgets.component';
 import { UpdDepensesComponent } from './updDepenses/updDepenses.component';
@@ -23,7 +22,6 @@ const appRoutes: Routes = [
   {path: 'depenses', component: DepensesComponent},
   {path: 'index', component: IndexComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'indexTotal', component: IndexTotalComponent},
   {path: 'rentrees', component: RentreesComponent},
   {path: 'updBudgets', component: UpdBudgetsComponent},
   {path: 'updDepenses', component: UpdDepensesComponent},
@@ -41,7 +39,6 @@ const appRoutes: Routes = [
     DepensesComponent,
     IndexComponent,
     LogoutComponent,
-    IndexTotalComponent,
     RentreesComponent,
     UpdBudgetsComponent,
     UpdDepensesComponent,

@@ -12,6 +12,7 @@ export class IndexComponent implements OnInit {
     personne: any[];
     transactions: any[];
     totalTransac: any[];
+    totalList: any[];
     selectPers = 1;
 
     constructor(public personneService: PersonneService, public transactionService: TransactionService) {
@@ -23,16 +24,18 @@ export class IndexComponent implements OnInit {
         this.personneService.getPersonneId(this.selectPers).subscribe((data) => this.personne = data); // /!\ ID A MODIFIER
         this.transactionService.getTransacId(this.selectPers).subscribe((data) => this.transactions = data); // /!\ ID A MODIFIER
         this.transactionService.getTotalId(this.selectPers).subscribe((data) => this.totalTransac = data); // /!\ ID A MODIFIER
+        this.transactionService.getTotalAll().subscribe((data) => this.totalList = data);
     }
 
 
     onChange(id: number): void {
       if ( id == 0) {
-        window.location.href = '/indexTotal';
-      }
+        this.selectPers = 0;
+      } else {
         this.selectPers = id;
         this.transactionService.getTransacId(id).subscribe((data) => this.transactions = data); // /!\ ID A MODIFIER
         this.transactionService.getTotalId(id).subscribe((data) => this.totalTransac = data); // /!\ ID A MODIFIER
+      }
     }
 
 }
