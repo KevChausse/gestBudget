@@ -1,6 +1,6 @@
 # GestBudget
 
-Le lancement du projet se fait en deux temps
+Le lancement du projet se fait en deux temps. Attention, le projet n'est pas complet et entierement fonctionnel.
 
 ## Lancement du serveur nodejs (pour la partie API)
 Lancer `nodemon` depuis le dossier /api/
