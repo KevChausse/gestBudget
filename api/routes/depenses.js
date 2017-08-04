@@ -52,7 +52,7 @@ router.get('/dep/:id', function(req, res, next) {
     query = "SELECT id_depense, poste_depense, DATE_FORMAT(date_depense, '%Y-%m-%d') AS 'm_date_depense', prenom_personne, nom_personne, montant_depense, personne_depense FROM depenses d JOIN personnes p on d.personne_depense = p.id_personne WHERE id_depense = "+req.params.id;
     connection.query(query,function(error, results, fields) {
       if(error) res.send(error);
-      else retFunc(results);
+      else retFunc(results[0]);
     });
   }
 

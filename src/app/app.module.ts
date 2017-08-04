@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'rentrees', component: RentreesComponent},
   {path: 'updBudgets', component: UpdBudgetsComponent},
-  {path: 'updDepenses', component: UpdDepensesComponent},
+  {path: 'updDepenses/:id', component: UpdDepensesComponent},
   {path: 'updRentrees', component: UpdRentreesComponent},
   {path: 'updUsers', component: UpdUsersComponent},
   {path: 'users', component: UsersComponent},

@@ -1,169 +1,91 @@
-
-        <div id="page-wrapper">
+     <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Gestion des d&eacute;penses</h1>
+                    <h1 class="page-header">Modifier la rentr&eacute;e: </h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
 
             <div class="row">
-                <div class="col-lg-2">
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#MyModal">
-                      Ajouter une d&eacute;pense
-                    </button>
+               <!--<form class="form-horizontal" action="/updateRentree/1" method="post" onsubmit="return trySub()">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Selectionnez une personne</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="personnes" id="personnes">
+                            <option value="0">-Selectionner une personne-</option>
+                            
+                            <option *ngFor = 'let usr of personneList' [value]="usr.id_personne" selected >
+                                {{usr.prenom_personne}} {{usr.nom_personne}}
+                            </option>
+                            
+                            </select>
+                        </div>
+                    </div>
+                    <p class="text-center">-OU-</p>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ajouter une personne</label>
+                        <div class="col-sm-8">
+                         <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrez un nom"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Entrez un prénom"/>
+                            </div>
+                         </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ajouter une origine</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="newRaison" id="newRaison" placeholder="Entrez une raison" value="{{depense.poste_depense}}"/>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Montant de la transaction</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="montant" step="0.01" min=0 placeholder="Entrez un montant" value="{{depense.montant_depense}}" required/>
+                                <span class="input-group-addon">&euro;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Date de la transaction</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="datepicker" name="date" placeholder="Entrez une date" value="{{depense.date_depense}}" required/>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                <div id="erreur" class="text-danger"></div>
+
+
+                <div class="form-group">
+                    <a href="/rentrees" class="btn btn-default col-sm-offset-10">&lt; Retour</a>
+
+                    <button type="submit" class="btn btn-success">Valider</button>
                 </div>
+
+                </form>-->
+            <p>{{ depense }}</p>
             </div>
 
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3>Liste des d&eacute;penses: </h3>
-                </div>
-
-
-                <div class="col-lg-4 text-right">
-                    <h4>
-                        <select id="selPers" onchange="updPage()">
-                            <option value="all" selected >-Toutes les personnes-</option>
-                    
-                            <option value="1" >
-                            Jean Dupont
-                            </option>
-                    
-                            <option value="2" >
-                            Jean Dupont
-                            </option>
-                    
-                            <option value="3" >
-                            tintin tintin
-                            </option>
-                    
-                        </select>
-                    </h4>
-                </div>
-
-
-	            <table class="table table-bordered table-striped">
-				  	<tr>
-					  <th>ID</th>
-					  <th>Poste</th>
-					  <th>Date</th>
-					  <th>Personne</th>
-                      <th>Montant</th>
-					  <th>Gestion</th>
-					</tr>
-                
-                    <tr>
-					  <td>#1</td>
-                      <td>iofniorz</td>
-                      <td>2017-08-09</td>
-                      <td>Jean Dupont</td>
-                      <td class="text-danger text-right">-789.00 &euro;</td>
-                      <td><a class="btn btn-warning" href="/updDepenses/1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a> <a class="btn btn-danger" href="/delDepenses/1"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Supprimer</a></td>
-                    </tr>
-                
-				</table>
-            </div>
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
-
-    <div class="modal fade bs-example-modal-lg" id="MyModal" tabindex="-1" role="dialog" data-target=".bs-example-modal-lg">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Ajouter une nouvelle d&eacute;pense</h4>
-          </div>
-          <div class="modal-body">
-            <form class="form-horizontal" action="/addDepenses" method="post" onsubmit="return trySub()">
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Selectionnez une personne</label>
-                    <div class="col-sm-9">
-                        <select class="form-control" name="personnes" id="personnes">
-                        <option value="0">-Selectionner une personne-</option>
-                        
-                           <option value='1'>Jean Dupont</option>
-                        
-                           <option value='2'>Jean Dupont</option>
-                        
-                           <option value='3'>tintin tintin</option>
-                        
-                        </select>
-                    </div>
-                </div>
-                <p class="text-center">-OU-</p>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Ajouter une personne</label>
-                    <div class="col-sm-9">
-                     <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrez un nom"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Entrez un prénom"/>
-                        </div>
-                     </div>
-                    </div>
-                </div>
-
-                <hr/>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Selectionnez une raison</label>
-                    <div class="col-sm-9">
-                        <select class="form-control" name="raisons" id="raisons">
-                            <option value="0">-Selectionner une raison-</option>
-                        
-                           <option value='1'>iofniorz</option>
-                        
-                        
-                        </select>
-                    </div>
-                </div>
-                <p class="text-center">-OU-</p>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Ajouter une Raison</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="newRaison" id="newRaison" placeholder="Entrez une raison"/>
-                    </div>
-                </div>
-
-                <hr/>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Montant de la transaction</label>
-                    <div class="col-sm-9">
-                        <div class="input-group">
-                            <input type="number" class="form-control" name="montant" step="0.01" min=0 placeholder="Entrez un montant" required/>
-                            <span class="input-group-addon">&euro;</span>
-                        </div>
-                    </div>
-                </div>
-
-                <hr/>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Date de la transaction</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="datepicker" name="date" placeholder="Entrez une date" required/>
-                    </div>
-                </div>
-
-                <hr/>
-
-                <div id="erreur" class="text-danger"></div>
-                    
-                <button type="submit" class="btn btn-success col-sm-offset-11">Valider</button>
-
-            </form>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
 
     <div class="modal fade bs-example-modal-lg" id="ValidModal" tabindex="-1" role="dialog" data-target=".bs-example-modal-lg">
@@ -171,7 +93,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Ajouter une nouvelle d&eacute;pense</h4>
+            <h4 class="modal-title">Modifier une nouvelle rentr&eacute;e</h4>
           </div>
           <div class="modal-body">
             <p> 
@@ -183,17 +105,18 @@
     </div><!-- /.modal -->
 
 
-    <script src="./assets/js/jquery.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-    <script src="./assets/js/sb-admin-2.js"></script>
-    <script src="./assets/jquery-ui.js"></script>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sb-admin-2.js"></script>
+    <script src="/jquery-ui.js"></script>
 
     <script>
       function trySub(){
         var inpNom = document.getElementById("nom").value;
         var inpPrenom = document.getElementById("prenom").value;
-        var inpPersonnes = document.getElementById("personnes").selectedIndex;
-        var inpRaisons = document.getElementById("raisons").selectedIndex;
+        var inpPersonnes = document.getElementById("personnes").value;
+        var inpRaisons = document.getElementById("raisons").value;
         var inpNewRaison = document.getElementById("newRaison").value;
         var spanErr = document.getElementById("erreur");
 
@@ -201,16 +124,17 @@
             spanErr.innerHTML = "<span>Veuillez renseigner une personne</span>";
             return false;
         }
-        if(inpNewRaison == "" && inpRaisons == ""){
+        if(inpNewRaison == "" && inpRaisons == 0){
             spanErr.innerHTML = "<span>Veuillez renseigner une raison</span>";
             return false;
         }
         return true;
       }
 
+
       function updPage(){
         var selPers = document.getElementById('selPers').value;
-        window.location.replace("/depenses/"+selPers);
+        window.location.replace("/rentrees/"+selPers);
       }
 
       $( function() {
