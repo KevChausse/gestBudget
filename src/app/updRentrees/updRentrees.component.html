@@ -1,0 +1,165 @@
+     <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Modifier la rentr&eacute;e: </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <form class="form-horizontal" action="/updateRentree/1" method="post" onsubmit="return trySub()">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Selectionnez une personne</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="personnes" id="personnes">
+                            <option value="0">-Selectionner une personne-</option>
+                            
+                               <option value="1">Jean Dupont</option>
+                            
+                               <option value="2">Jean Dupont</option>
+                            
+                               <option value="3" selected>tintin tintin</option>
+                            
+                            </select>
+                        </div>
+                    </div>
+                    <p class="text-center">-OU-</p>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ajouter une personne</label>
+                        <div class="col-sm-8">
+                         <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrez un nom"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Entrez un prénom"/>
+                            </div>
+                         </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Selectionnez une origine</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="raisons" id="raisons">
+                                <option value="0">-Selectionner une origine-</option>
+                            
+                               <option value="1" selected>iofniorz</option>
+                            
+                            </select>
+                        </div>
+                    </div>
+                    <p class="text-center">-OU-</p>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ajouter une origine</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="newRaison" id="newRaison" placeholder="Entrez une raison"/>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Montant de la transaction</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="montant" step="0.01" min=0 placeholder="Entrez un montant" value="789.00" required/>
+                                <span class="input-group-addon">&euro;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Date de la transaction</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="datepicker" name="date" placeholder="Entrez une date" value="2017-08-09" required/>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                <div id="erreur" class="text-danger"></div>
+
+
+                <div class="form-group">
+                    <a href="/rentrees" class="btn btn-default col-sm-offset-10">&lt; Retour</a>
+
+                    <button type="submit" class="btn btn-success">Valider</button>
+                </div>
+
+                </form>
+            </div>
+
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+
+
+    <div class="modal fade bs-example-modal-lg" id="ValidModal" tabindex="-1" role="dialog" data-target=".bs-example-modal-lg">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modifier une nouvelle rentr&eacute;e</h4>
+          </div>
+          <div class="modal-body">
+            <p> 
+            </p>
+            <button type="button" class="btn btn-primary col-sm-offset-11" data-dismiss="modal">OK</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sb-admin-2.js"></script>
+    <script src="/jquery-ui.js"></script>
+
+    <script>
+      function trySub(){
+        var inpNom = document.getElementById("nom").value;
+        var inpPrenom = document.getElementById("prenom").value;
+        var inpPersonnes = document.getElementById("personnes").value;
+        var inpRaisons = document.getElementById("raisons").value;
+        var inpNewRaison = document.getElementById("newRaison").value;
+        var spanErr = document.getElementById("erreur");
+
+        if(inpNom == "" && inpPrenom == "" && inpPersonnes==0){
+            spanErr.innerHTML = "<span>Veuillez renseigner une personne</span>";
+            return false;
+        }
+        if(inpNewRaison == "" && inpRaisons == 0){
+            spanErr.innerHTML = "<span>Veuillez renseigner une raison</span>";
+            return false;
+        }
+        return true;
+      }
+
+
+      function updPage(){
+        var selPers = document.getElementById('selPers').value;
+        window.location.replace("/rentrees/"+selPers);
+      }
+
+      $( function() {
+        $( "#datepicker" ).datepicker({
+          dateFormat: "yy-mm-dd"
+        });
+      } );
+        
+    </script>
+
+
+
+
+    

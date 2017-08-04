@@ -1,0 +1,118 @@
+    <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Modification de l'utilisateur: </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+            <div class="row">
+                <form class="form-horizontal" action="/updateUser/2" method="post" onsubmit="return trySub()">
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Modifier une personne</label>
+                    <div class="col-sm-8">
+                     <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="nom" placeholder="Entrez un nom" value="Dupont" required/>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="prenom" placeholder="Entrez un prénom" value="Jean" required/>
+                        </div>
+                     </div>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Red&eacute;finir le login</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="login" placeholder="Entrez un login" value=""  required/>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Est Parent?</label>
+                    <div class="col-sm-1">
+                        <input type="checkbox" class="form-control" name="parent" id="parent"  checked="checked"  />
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Red&eacute;finir le mot de passe</label>
+                    <div class="col-sm-8">
+                         <div class="row">
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="pass1" id="pass1" placeholder="Entrez un mot de passe"  disabled  />
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="pass2" id="pass2" placeholder="Confirmez le mot de passe"  disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div id="erreur" class="text-danger"></div>
+
+                <div class="form-group">
+                    <a href="/users" class="btn btn-default col-sm-offset-10">&lt; Retour</a>
+
+                    <button type="submit" class="btn btn-success">Valider</button>
+                </div>
+
+            </form>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+
+    <div class="modal fade bs-example-modal-lg" id="ValidModal" tabindex="-1" role="dialog" data-target=".bs-example-modal-lg">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modifier un utilisateur</h4>
+          </div>
+          <div class="modal-body">
+            <p> 
+            </p>
+            <button type="button" class="btn btn-primary col-sm-offset-11" data-dismiss="modal">OK</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sb-admin-2.js"></script>
+    <script src="/jquery-ui.js"></script>
+
+     <script>
+      function trySub(){
+        var inpPass1 = document.getElementById("pass1").value;
+        var inpPass2 = document.getElementById("pass2").value;
+        var spanErr = document.getElementById("erreur");
+
+        if(inpPass1 != inpPass2){
+            spanErr.innerHTML = "<span>Veuillez renseigner un mot de passe identique!</span>";
+            return false;
+        }
+
+        return true;
+      }
+      $( function() {
+        $( "#datepicker" ).datepicker({
+          dateFormat: "yy-mm-dd"
+        });
+      } );
+    </script>
+    

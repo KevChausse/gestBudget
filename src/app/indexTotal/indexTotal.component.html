@@ -1,0 +1,77 @@
+ <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Bienvenue Jean</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Liste des transactions: </h3>
+                </div>
+
+
+                <div class="col-lg-4 text-right">
+                    <h4>
+                        <select id="selPers" onchange="updPage()">
+                        <option value="0" selected >-Toutes les personnes-</option>
+                    
+                            <option value="1" >
+                            Jean Dupont
+                            </option>
+                    
+                            <option value="2" >
+                            Jean Dupont
+                            </option>
+                    
+                        </select>
+                    </h4>
+                </div>
+
+	            <table class="table table-bordered table-striped">
+				  	<tr>
+					  <th>ID</th>
+					  <th>Personne</th>
+					  <th>Total</th>
+					</tr>
+                    
+					<tr 
+                        class="info"
+                        >
+					  <td><a href="/index/1">#1</a></td>
+					  <td>Jean Dupont</td>
+                      
+                      <td class="text-success text-right">+0.00 &euro;</td>
+                     
+					</tr>
+                    
+					<tr >
+					  <td><a href="/index/2">#2</a></td>
+					  <td>Jean Dupont</td>
+                      
+                      <td class="text-success text-right">+0.00 &euro;</td>
+                     
+					</tr>
+                    
+				</table>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+ 
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sb-admin-2.js"></script>
+    <script src="/jquery-ui.js"></script>
+
+    <script>
+
+      function updPage(){
+        var selPers = document.getElementById('selPers').value;
+        window.location.replace("/index/"+selPers);
+      }
+
+    </script>
